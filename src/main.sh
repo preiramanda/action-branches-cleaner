@@ -23,8 +23,6 @@ main() {
 
   not_merged_prs=$(comm -23 <(echo "$closed_prs" | sort) <(echo "$merged_prs" | sort))
 
-  cleanup::delete_merged_branches "$merged_prs"
-
   cleanup::delete_unmerged_branches "$not_merged_prs"
 
   cleanup::delete_inactive_branches "$DAYS_OLD_THRESHOLD"
